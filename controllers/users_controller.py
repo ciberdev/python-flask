@@ -1,4 +1,5 @@
 from flask import redirect, render_template, session
+from lib.dbconnection import db
 
 def list():
     datos = {"title": "Modulo de Usuarios", "message":"Bienvenido a nuestro sitio"}

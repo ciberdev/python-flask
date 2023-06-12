@@ -1,11 +1,18 @@
+from sqlalchemy import select
 from flask import redirect, render_template, session, request
 from flask.helpers import url_for
+from entities.users import User
+from lib.dbconnection import db
 
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] == 'admin' and request.form['password'] == 'admin':
+        statement = select(User).where(User.user_name == request.form['username'] and User.password == request.form['password'])
+        dbuser = db.session.execute(statement).first()
+
+        if not dbuser == None:
             session['loggedIn'] = True
+            session['logged_user'] = dbuser
             return redirect(url_for('bpsystem.inicio'))
         else:
             error = 'Credenciales inválidas.  Por favor intente de nuevo'
