@@ -1,8 +1,19 @@
 class Config():
-    # Establecemos los parametros que vamos a ocupar para conectarnos a la base de datos
-    server = '127.0.0.1'
-    database = 'tutorial'
-    username = 'tester'
-    password = 'tester2023#'
-    driver = 'FreeTDS'
-    driver2 = 'ODBC Driver 17 for SQL Server'    
+    ENV = "Production"
+    DEBUG = False
+    TESTING = False
+    SESSION_TYPE = 'filesystem'
+    SECRET_KEY = 'MyProductionKey'
+    
+class DevConfig():
+    ENV = "Development"
+    DEBUG = True
+    SESSION_TYPE = 'filesystem'
+    SECRET_KEY = 'MyDevelopmentKey'
+    
+class TestConfig():
+    ENV = "Testing"
+    DEBUG = True
+    TESTING = True
+    SESSION_TYPE = 'filesystem'
+    SECRET_KEY = 'MyTestingKey'

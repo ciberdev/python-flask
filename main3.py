@@ -12,13 +12,19 @@ Bootstrap5(app)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
+@app.route('/users')
+def users():
+    datos = {"title": "Modulo de Usuarios", "message":"Bienvenido a nuestro sitio"}
+    if (session.get('loggedIn', False)):
+        return render_template('users.html', datos=datos)
+    return redirect(url_for('root')) 
+    
 @app.route('/inicio')
 def inicio():    
     datos = {"title": "Página Principal", "message":"Bienvenido a nuestro sitio"}
-    if (session.get('loggedIn', True)):
+    if (session.get('loggedIn', False)):
         return render_template('inicio.html', datos=datos)
-    else:
-        return redirect(url_for('root'))        
+    return redirect(url_for('root'))        
 @app.route('/', methods=['GET', 'POST'])
 def root():
     error = None
