@@ -1,0 +1,33 @@
+{% extends 'privbase.html' %}
+
+{% block content %}
+<h3>Nuevo Usuario</h3>
+<div class="container-sm">
+    <form method="POST">
+        <div class="mb-3">
+            <label id="username_label" for="username">Usuario</label>
+            <input type="text" name="user_name" value="{{usuario.user_name}}"
+                   class="form-control" >
+        </div>    
+        <div class="mb-3">
+            <label id="passsword_label" for="password">Contraseña</label>
+            <input type="password" name="password" value="{{usuario.password}}" class="form-control" >
+        </div>    
+        <div class="mb-3">
+            <label id="firstname_label" for="first_name">Nombres</label>
+            <input type="text" name="first_name" value="{{usuario.first_name}}" class="form-control" >
+        </div>    
+        <div class="mb-3">
+            <label id="lastname_label" for="last_name">Apellidos</label>
+            <input type="text" name="last_name" value="{{usuario.last_name}}" class="form-control" >
+        </div>    
+        <div class="mb-3">
+            <label id="email_label" for="email_address">Correo Electrónico</label>
+            <input type="text" name="email_address" value="{{usuario.email_address}}" class="form-control" >
+        </div>    
+        <button type="submit" class="btn btn-primary" >Guardar</button>
+        <button type="button" class="btn btn-warning" 
+            onclick="window.location.href='{{ url_for('bpusers.list')}}'">Regresar</button>
+    </form>
+</div>
+{% endblock %}
