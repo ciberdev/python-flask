@@ -3,20 +3,30 @@
 {% block content %}
 <script>
     $(document).ready(function(){
-        $('button').click(function(){
-            alert('Nuevo usuario')
+        $("anothr").click(function(){
+            alert('nuevo usuario')
+            $.ajax({
+                url:"/users/newUser",
+                type:'POST',
+                success: function(response){
+                    $(body).append(response)
+                }
+            })
         })
     })
 </script>
     <h3>Usuarios</h3>
 
-    <div class="btn-toolbar" role="toolbar" aria-label="Barra de herramientas">
-        <div class="btn-group me-2" role="group" aria-label="Opciones">
-          <button id="newUser" type="button" class="btn btn-default" >Nuevo</button>
-          <button type="button" class="btn btn-default" >Modificar</button>
-          <button type="button" class="btn btn-default" >Eliminar</button>
+    <form method="POST">
+        <div class="btn-toolbar" role="toolbar" aria-label="Barra de herramientas">
+            <div class="btn-group me-2" role="group" aria-label="Opciones">
+            <button id="newUser" type="button" class="btn btn-default" 
+                    onclick="window.location.href='{{ url_for('bpusers.nuevo_usuario')}}'" >Nuevo</button>
+            <button id="updateUser" type="button" class="btn btn-default" >Modificar</button>
+            <button id="deleteUser" type="button" class="btn btn-default" >Eliminar</button>
+            </div>
         </div>
-    </div>
+    </form>
 
     <table id="data" class="table table-triped">
         <thead>

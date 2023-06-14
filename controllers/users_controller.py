@@ -14,6 +14,7 @@ def list():
 
 def nuevo_usuario():
     print("rutina de creacion de usuario")
+    return render_template('nuevo_usuario.html') 
 
 def modificar_usuario():
     pass
