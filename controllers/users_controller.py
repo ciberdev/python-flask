@@ -11,3 +11,12 @@ def list():
         
         return render_template('users.html', datos=datos, users=users)
     return render_template('login.html')     
+
+def nuevo_usuario():
+    print("rutina de creacion de usuario")
+
+def modificar_usuario():
+    pass
+
+def eliminar_usuario():
+    pass

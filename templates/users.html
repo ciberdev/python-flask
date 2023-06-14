@@ -1,9 +1,24 @@
 {% extends 'privbase.html' %}
 
 {% block content %}
+<script>
+    $(document).ready(function(){
+        $('button').click(function(){
+            alert('Nuevo usuario')
+        })
+    })
+</script>
     <h3>Usuarios</h3>
 
-    <table>
+    <div class="btn-toolbar" role="toolbar" aria-label="Barra de herramientas">
+        <div class="btn-group me-2" role="group" aria-label="Opciones">
+          <button id="newUser" type="button" class="btn btn-default" >Nuevo</button>
+          <button type="button" class="btn btn-default" >Modificar</button>
+          <button type="button" class="btn btn-default" >Eliminar</button>
+        </div>
+    </div>
+
+    <table id="data" class="table table-triped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -20,11 +35,10 @@
                     <td>{{ item.User.user_name}}</td>
                     <td>{{ item.User.first_name}}</td>
                     <td>{{ item.User.last_name}}</td>
-                    <td>{{ item.User.email}}</td>
+                    <td>{{ item.User.email_address}}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
 
 {% endblock %}
