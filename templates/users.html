@@ -2,4 +2,29 @@
 
 {% block content %}
     <h3>Usuarios</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in users  %}
+                <tr>
+                    <td>{{ item.User.id}}</td>
+                    <td>{{ item.User.user_name}}</td>
+                    <td>{{ item.User.first_name}}</td>
+                    <td>{{ item.User.last_name}}</td>
+                    <td>{{ item.User.email}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
 {% endblock %}
