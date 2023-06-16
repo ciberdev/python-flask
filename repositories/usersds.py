@@ -21,7 +21,7 @@ class UsersDS():
         if(usuario.id == None):
             db.session.add(usuario)
         else:
-            pass  
+            db.session.update(usuario)
         db.session.commit()    
         
     
