@@ -32,14 +32,15 @@ def list():
     return render_template('login.html')     
 
 def datos_usuario():
+    servicioDB = UsersDS()
     usuario = session['object_user']
     if request.method == 'POST':
         form = request.form
-        usuario = User(id=None, user_name=form['user_name'], email_address=form['email_address'],
+        usuario = User(id=form['id'], user_name=form['user_name'], email_address=form['email_address'],
                     password=form['password'], first_name=form['first_name'], last_name=form['last_name'], 
                     created=datetime.datetime.now(),
                     idtype=1)
-
+        servicioDB.guardarUsuario(usuario)
 
     return render_template('datos_usuario.html', usuario=usuario) 
 

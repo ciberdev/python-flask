@@ -13,15 +13,15 @@ class UsersDS():
     def obtenerUsuario(self, uid):
         statement = select(User).where(User.id == uid)
         resultado = db.session.execute(statement).first()
-        print("--->")
-        print(resultado)
         return resultado
     
     def guardarUsuario(self, usuario):
+        print(usuario.id)
         if(usuario.id == None):
             db.session.add(usuario)
         else:
-            db.session.update(usuario)
+            #print(dir(db.session))
+            db.session.merge(usuario)
         db.session.commit()    
         
     

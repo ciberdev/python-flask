@@ -16,7 +16,7 @@ class UserType(Base):
 class User(Base):
     __tablename__ = "tf_user"
     
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     user_name : Mapped[str]
     email_address: Mapped[str]
     password: Mapped[str]
