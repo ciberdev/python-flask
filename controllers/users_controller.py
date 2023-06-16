@@ -39,8 +39,7 @@ def datos_usuario():
                     password=form['password'], first_name=form['first_name'], last_name=form['last_name'], 
                     created=datetime.datetime.now(),
                     idtype=1)
-        db.session.add(usuario)
-        db.session.commit()
+
 
     return render_template('datos_usuario.html', usuario=usuario) 
 
