@@ -16,7 +16,7 @@ class UsersDS():
         return resultado
     
     def guardarUsuario(self, usuario):
-        print(usuario.id)
+        
         if(usuario.id == None):
             db.session.add(usuario)
         else:

@@ -33,10 +33,11 @@ def list():
 
 def datos_usuario():
     servicioDB = UsersDS()
-    usuario = session['object_user']
+    #usuario = session['object_user']
     if request.method == 'POST':
         form = request.form
         if(form['id'] != None):
+            # Recuperamos una referencia al objeto de BD
             user = servicioDB.obtenerUsuario(form['id'])
             user.user_name=form['user_name']
             user.email_address=form['email_address']
@@ -45,7 +46,7 @@ def datos_usuario():
             user.last_name=form['last_name']
             usuario = servicioDB.guardarUsuario(user)
         else:
-            usuario = User(id=form['id'], user_name=form['user_name'], email_address=form['email_address'],
+            usuario = User(user_name=form['user_name'], email_address=form['email_address'],
                     password=form['password'], first_name=form['first_name'], last_name=form['last_name'], 
                     created=datetime.datetime.now(),
                     idtype=1)
