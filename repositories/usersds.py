@@ -16,3 +16,13 @@ class UsersDS():
         print("--->")
         print(resultado)
         return resultado
+    
+    def guardarUsuario(self, usuario):
+        if(usuario.id == None):
+            db.session.add(usuario)
+        else:
+            pass  
+        db.session.commit()    
+        
+    
+    
