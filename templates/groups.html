@@ -1,0 +1,52 @@
+{% extends 'privbase.html' %}
+
+{% block content %}
+
+    <h3>Grupos</h3>
+
+    <form method="POST">
+        <div class="btn-toolbar" role="toolbar" aria-label="Barra de herramientas">
+            <div class="btn-group me-2" role="group" aria-label="Opciones">
+            <button id="newGroup" type="submit" class="btn btn-default" onClick="setOperation('NUEVO')" >Nuevo</button>
+            
+            <button id="updateGroup" type="submit" class="btn btn-default" onClick="setOperation('MODIFICAR')">Modificar</button>
+            <button id="deleteGroup" type="submit" class="btn btn-default" onClick="setOperation('ELIMINAR')">Eliminar</button>
+            </div>
+        </div>
+        <input id="selected_group" type="hidden" name="selected_group" value="" >
+        <input id="operation" type="hidden" name="operation" value="" >
+    </form>
+
+    <table id="data" class="table table-triped">
+        <thead>
+            <tr>
+                <th>Elegir</th>
+                <th>Id</th>
+                <th>Nombre de Grupo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in groups  %}
+                <tr>
+                    <td><input type="checkbox" onclick="setGroupSelected(this, {{ item.Group.idgroup}})" ></td>
+                    <td>{{ item.Group.idgroup}}</td>
+                    <td>{{ item.Group.group_name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<script>
+    function setGroupSelected( componente, id){
+        if (componente.checked){
+            document.getElementById('selected_group').value = id
+        } else{
+            document.getElementById('selected_group').value = undefined
+        }
+    }
+    function setOperation(operation){
+        document.getElementById('operation').value = operation
+    }
+</script>
+
+{% endblock %}
