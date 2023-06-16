@@ -15,7 +15,7 @@ def list():
             
         if(request.form['operation']=='MODIFICAR'):
             resultado = servicioDB.obtenerUsuario(request.form['selected_user'])
-            session['object_user'] = resultado.User
+            session['object_user'] = resultado
             if(resultado != None):
                 return redirect(url_for('bpusers.datos_usuario')) 
             #render_template('datos_usuario.html', usuario=resultado.User)
@@ -36,11 +36,20 @@ def datos_usuario():
     usuario = session['object_user']
     if request.method == 'POST':
         form = request.form
-        usuario = User(id=form['id'], user_name=form['user_name'], email_address=form['email_address'],
+        if(form['id'] != None):
+            user = servicioDB.obtenerUsuario(form['id'])
+            user.user_name=form['user_name']
+            user.email_address=form['email_address']
+            user.password=form['password']
+            user.first_name=form['first_name'] 
+            user.last_name=form['last_name']
+            usuario = servicioDB.guardarUsuario(user)
+        else:
+            usuario = User(id=form['id'], user_name=form['user_name'], email_address=form['email_address'],
                     password=form['password'], first_name=form['first_name'], last_name=form['last_name'], 
                     created=datetime.datetime.now(),
                     idtype=1)
-        servicioDB.guardarUsuario(usuario)
+            usuario=servicioDB.guardarUsuario(usuario)
 
     return render_template('datos_usuario.html', usuario=usuario) 
 
