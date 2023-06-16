@@ -15,3 +15,5 @@ entities/__pycache__/groups.cpython-310.pyc
 flask_session/0534c6b1d1f20cacc86cfe3577ff224d
 repositories/__pycache__/groupsds.cpython-310.pyc
 routes/__pycache__/bpgroups.cpython-310.pyc
+routes/__pycache__/bpsystem.cpython-310.pyc
+controllers/__pycache__/system_controller.cpython-310.pyc

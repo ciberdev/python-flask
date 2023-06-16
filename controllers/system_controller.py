@@ -25,3 +25,7 @@ def inicio():
     if (session.get('loggedIn', False)):
         return render_template('inicio.html', datos=datos)
     return render_template('login.html')   
+
+def logout():
+    session.clear()
+    return redirect( url_for('bpsystem.login'))
